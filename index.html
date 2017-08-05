@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Group 9 - Project Management</title>
+
+    <!-- Bootstrap Core CSS -->
+    
+<link href="css/bootstrap.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="css/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+
+	<link href="css/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+	    
+    <!-- Custom Fonts -->
+    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<!-- AngularJS -->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+		
+		
+		<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.1.js"></script>
+		<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.1.js"></script>
+   
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body ng-app ng-controller="myController">
+
+    <div id="wrapper" style="background-color: #e7ded0;">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" style="background-color:#500000" >
+            <div class="navbar-header" >
+               
+                <a class="navbar-brand"  href="index.html" style="color:white"><img src="docs/tamu.png" style="width: 4%;margin-top:0px;" align="left" /><b>Group 9 - MIS Project Management & Implementation (ISYS 630-602)</b></a>
+            </div>
+            <!-- /.navbar-header -->
+
+           
+            
+            <!-- /.navbar-static-side -->
+        </nav>
+
+     
+            
+            <div class="row" style="background-color: #e7ded0;">
+<div class="row" class="col-lg-12" >
+<div class="col-xs-6">
+<div class="panel panel-default" id="accordion">
+                    
+					<div class="panel-heading" style="background-color:#500000">
+                             <a><b style="color:white">Group Info</b></a>
+                        </div>
+                        <div class="panel-body">
+						<div class="datatable-wrapper">
+						 <table class="table table-striped table-bordered table-hover"  >
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-1">Name</th>
+                                            <th class="col-md-1">E-mail</th>
+                                            <th class="col-md-1">Phone</th>
+                                           
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="group in groupinfo">
+    <td>
+    {{ group.name }}</td>
+    <td>{{ group.mail }}</td>
+    <td>{{ group.phone }}</td>
+   
+
+    
+ </tr>
+                                    </tbody>
+                                </table>
+		
+        
+    
+
+
+
+						
+						
+						
+                       </div>
+                            
+                        </div>
+                        <!-- /.panel-body -->
+                    
+                    <!-- /.panel -->
+                
+	</div>
+</div>			
+				
+     
+
+<div class="col-xs-6" >
+	<div class="panel panel-default" id="accordion">
+                        <div class="panel-heading" style="background-color:#500000">
+                           <a><b style="color:white">Group Readings/Presentation</b></a>
+                        </div>
+                        <!-- /.panel-heading -->
+						
+                        <div class="panel-body">
+                                 <table class="table table-striped table-bordered table-hover"  >
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-1">Domain</th>
+                                            <th class="col-md-1">Article Number</th>
+                                            <th class="col-md-1">Article Name</th>
+                                                                                        <th class="col-md-1">PDF/PPT</th>
+
+                                           
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="reading in readinginfo">
+    <td>
+    {{ reading.domain }}</td>
+    <td>{{ reading.num }}</td>
+    <td>{{ reading.name }}</td>
+        <td><a href="{{ reading.pdf }} " style="color: #500000"><b>{{ reading.pdftext }}</b></a></td>
+
+
+   
+
+    
+ </tr>
+                                    </tbody>
+                                </table>
+                        </div>
+					
+                        <!-- /.panel-body -->
+                    </div>   
+
+</div>
+</div>
+
+                <div class="col-xs-12" style="background-color: #e7ded0;">
+                    <div class="panel panel-default" style="background-color: #e7ded0;">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="background-color: #e7ded0;">
+						
+						
+					
+					
+					<div class="panel panel-default">
+						<div class="panel-heading" style="background-color:#500000">
+                            <b style="color:white">Submissions</b>
+                        </div>
+						<div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-1">Assignment Title</th>
+                                            <th class="col-md-1">Document</th>
+                                            <th class="col-md-1">Due Date</th>
+											<th class="col-md-1">Date submitted</th>
+                                            <th class="col-md-1">doc/xls</th>
+                                            <th class="col-md-1">PDF</th>
+                                            <th class="col-md-1">Comments</th>
+											
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="assn in assignments">
+    <td>
+	{{ assn.title }}</td>
+    <td>{{ assn.document}}</td>
+    <td>{{ assn.ddate }}</td>
+	<td>{{ assn.sdate }}</td>
+    <td><a href="{{ assn.docname }}" style="color: #500000"><b>{{ assn.doc }}</b></a></td>
+	<td><a href="{{ assn.pdfname }}" style="color: #500000"><b>{{ assn.pdf }}</b></a></td>
+	<td>{{ assn.cmt }}</td>
+
+    
+ </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+							
+							
+							</div>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+				
+				
+			<div class="col-xs-12">
+                    <div class="panel panel-default">
+                        
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="background-color: #e7ded0;">
+                        
+                        
+                    
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="background-color:#500000">
+                            <b style="color:white">Important Links</b>
+                        </div>
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">	
+ <table class="table table-striped table-bordered table-hover"  >
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-1"><a href="http://ecampus.tamu.edu/" style="color: #500000">eCampus</a></th>
+                                            <th class="col-md-1"><a href="docs/syllabus.pdf" style="color: #500000">Syllabus & Schedule</a></th>
+                                            <th class="col-md-1"><a href="docs/groupinstructions.pdf" style="color: #500000">Group Evaluation Instructions</a></th>
+                                                                                      
+
+                                           
+                                            
+                                        </tr>
+                                    </thead>
+                                 
+                            </div></div></div></div></div></div></div></div>
+            <!-- /.row -->
+            
+              
+       
+    </div>
+    <!-- /#wrapper -->
+ </table></div></div></div></div></div></div></div></div>
+
+ <footer>
+                    
+                             <div style="width: 100%; height: 50px;float: left;
+    border-style: solid;
+    border-color: #500000;
+    background-color: #500000;">
+                                    <a href="/"><img alt="Texas A&amp;M University" src="docs/primary-mark.png" style="width: 15%; margin-left: 9.5%" align="left" /></a>
+                                    <p style="color: white;" align="center">&copyCopyright Group 9 - ISYS 630-602</p>
+                              </div> 
+
+                        
+                  </footer>
+    <!-- jQuery -->
+    <script src="javascript/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="javascript/bootstrap.min.js"></script>
+
+
+  <!-- Metis Menu Plugin JavaScript -->
+    <script src="javascript/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="javascript/jquery.dataTables.min.js"></script>
+    <script src="javascript/dataTables.bootstrap.min.js"></script>
+	
+	
+
+    <!-- Custom Theme JavaScript -->
+    <script src="javascript/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+	
+	
+	  
+	  
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').dataTable( {
+		"order": [[ 2, "asc" ]]
+		
+		});
+    });
+    </script>
+	
+	<script>
+	function myController($scope) {
+$scope.pdf1="docs/TEAMCONTRACT.pdf";
+$scope.pdf2="docs/PROJECT SUMMARY.pdf"
+$scope.doc2="docs/PROJECT SUMMARY.docx"
+$scope.doc1="docs/TEAMCONTRACT.docx";
+  $scope.PDF_un="docs/74.pdf";
+    $scope.PDF_un2="docs/99.pdf";
+    $scope.pdf3="docs/org.pdf";
+        $scope.pdf4="docs/pre.pdf";
+            $scope.pdf5="docs/pro.pdf";
+               $scope.doc3="docs/org.docx";
+        $scope.doc4="docs/pre.docx";
+            $scope.doc5="docs/Project Charter_Final.doc";
+            $scope.doc6="docs/pro2.docx";
+            $scope.doc7="docs/wbs.docx";
+            $scope.doc8="docs/sa.docx";
+             $scope.pdf6="docs/pro2.pdf";
+            $scope.pdf7="docs/wbs.pdf";
+            $scope.pdf8="docs/sa.pdf";
+            $scope.pdf9="docs/gantt.pdf";
+            $scope.doc9="docs/Project1.mpp";
+            $scope.doc10="docs/Project2.mpp";
+            $scope.pdf10="docs/PERT.pdf";
+            $scope.doc11="docs/pb.xlsx";
+            $scope.pdf11="docs/pb.pdf";
+            $scope.pdf12="docs/ac.pdf";
+            $scope.pdf13="docs/qm.pdf";
+       $scope.doc12="docs/ac.doc";
+            $scope.doc13="docs/qm.docx";
+
+            $scope.pdf14="docs/OC.pdf";
+            $scope.pdf15="docs/RACI.pdf";
+       $scope.doc14="docs/OC.docx";
+            $scope.doc15="docs/RACI.xls";
+
+            $scope.pdf16="docs/10.pdf";
+            $scope.pdf17="docs/rm.pdf";
+       $scope.doc16="docs/10.docx";
+            $scope.doc17="docs/rm.docx";
+
+              $scope.doc18="docs/cp.xlsx";
+            $scope.pdf18="docs/cp.pdf";
+
+  $scope.doc19="docs/proc1.docx";
+            $scope.pdf19="docs/proc1.pdf";
+
+              $scope.doc20="docs/proc2.docx";
+            $scope.pdf20="docs/proc2.pdf";
+
+	$scope.assignments = [
+        
+	         {id:0,'title':'Project Summary','document':'Project Summary','ddate':'02/02/2017','sdate':'02/02/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf2,'docname':$scope.doc2},
+            {id:1,'title':'Assignment 1: Project Integration Management','document':'Organization Description','ddate':'02/09/2017','sdate':'02/09/2017', 'doc':'DOC' , 'pdf':'PDF','cmt':'','pdfname':$scope.pdf3,'docname':$scope.doc3},
+             {id:2,'title':'Assignment 1: Project Integration Management','document':'Project Charter','ddate':'02/09/2017','sdate':'02/09/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf5,'docname':$scope.doc5},
+              {id:3,'title':'Assignment 1: Project Integration Management','document':'Preliminary Project Scope Statement','ddate':'02/09/2017','sdate':'02/09/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf4,'docname':$scope.doc4},
+              
+
+ {id:4,'title':'Assignment 2: Project Scope Management','document':'Project scope statement (revised)','ddate':'02/23/2017','sdate':'02/23/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf6,'docname':$scope.doc6},
+                 {id:5,'title':'Assignment 2: Project Scope Management','document':'Work Breakdown Schedule','ddate':'02/23/2017','sdate':'02/23/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf7,'docname':$scope.doc7},
+                   {id:6,'title':'Assignment 2: Project Scope Management','document':'Stakeholder Analysis','ddate':'02/23/2017','sdate':'02/23/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf8,'docname':$scope.doc8},
+
+                     {id:7,'title':'Assignment 3: Project Time Management','document':'Gantt chart','ddate':'03/07/2017','sdate':'03/07/2017', 'doc': 'MPP', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf9,'docname':$scope.doc9},
+                      {id:8,'title':'Assignment 3: Project Time Management','document':'PERT Diagram','ddate':'03/07/2017','sdate':'03/07/2017', 'doc': 'MPP', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf10,'docname':$scope.doc10},
+                      {id:9,'title':'Assignment 4: Project Cost Management','document':'Project Budget','ddate':'03/21/2017','sdate':'03/21/2017', 'doc': 'XLSX', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf11,'docname':$scope.doc11},
+                        {id:10,'title':'Assignment 5: Project Quality Management','document':'How would quality be assessed?','ddate':'03/23/2017','sdate':'03/23/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf13,'docname':$scope.doc13},
+                         {id:11,'title':'Assignment 5: Project Quality Management','document':'Assumptions and constraints log','ddate':'03/23/2017','sdate':'03/23/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf12,'docname':$scope.doc12},
+                         {id:12,'title':'Assignment 6: Project HR management ','document':'Organizational chart for the project team','ddate':'04/04/2017','sdate':'04/04/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf14,'docname':$scope.doc14},
+                                {id:13,'title':'Assignment 6: Project HR management ','document':'Responsibility assignment matrix','ddate':'04/04/2017','sdate':'04/04/2017', 'doc': 'XLS', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf15,'docname':$scope.doc15},
+                                {id:14,'title':'Assignment 7: Project Communications Management','document':'Communication plan for the group','ddate':'04/20/2017','sdate':'04/20/2017', 'doc': 'XLS', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf18,'docname':$scope.doc18},
+                                  {id:15,'title':'Assignment 8: Project Risk Management','document':'Top 10 risk list for your project','ddate':'04/11/2017','sdate':'04/11/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf16,'docname':$scope.doc16},
+                                  {id:16,'title':'Assignment 8: Project Risk Management','document':'Processes put in place to mitigate these risks','ddate':'04/11/2017','sdate':'04/11/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf17,'docname':$scope.doc17},
+                                         {id:17,'title':'Assignment 9: Project Procurement Management','document':'RFP','ddate':'04/25/2017','sdate':'04/25/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf19,'docname':$scope.doc19},
+                                         {id:18,'title':'Assignment 9: Project Procurement Management','document':'Proposal evaluation sheet','ddate':'04/25/2017','sdate':'04/25/2017', 'doc': 'DOC', 'pdf':'PDF','cmt':'','pdfname':$scope.pdf20,'docname':$scope.doc20},
+                                         {id:19,'title':'Assignment 10: Change Management','document':'Change Management Plan','ddate':'TBD','sdate':'', 'doc': '', 'pdf':'','cmt':'','pdfname':'','docname':''}
+
+
+
+    ];
+	
+	
+
+    $scope.groupinfo = [
+        {id:0,'name':'Alpha George','mail':'alpha.george@tamu.edu','phone':'979-721-0815'},
+                {id:0,'name':'James Saby','mail':'jamessaby@tamu.edu','phone':'979-739-4213'},
+                        {id:0,'name':'Vijay Krishnan Kumar','mail':'vijay_krishnan.k@tamu.edu','phone':'360-207-9088'}
+
+
+            
+
+    ];
+    
+
+  
+      $scope.readinginfo = [
+        {id:0,'domain':'Risk','num':'74','name':'How to Mini-manage...','ppt':'','pdf':$scope.PDF_un, 'pdftext':'PDF'},
+                {id:0,'domain':'Risk','num':'99','name':'Why Your IT Project May Be Riskier Than You Think','ppt':'', 'pdf':$scope.PDF_un2,'pdftext':'PDF'}
+
+
+            
+
+    ];
+    }
+	
+	
+	angular.module('ui.bootstrap.demo', ['ui.bootstrap']);
+angular.module('ui.bootstrap.demo').controller('DatepickerDemoCtrl', function ($scope) {
+  $scope.today = function() {
+    $scope.dt = new Date();
+  };
+  $scope.today();
+
+  $scope.clear = function () {
+    $scope.dt = null;
+  };
+
+  // Disable weekend selection
+  $scope.disabled = function(date, mode) {
+    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+  };
+
+  $scope.toggleMin = function() {
+    $scope.minDate = $scope.minDate ? null : new Date();
+  };
+  $scope.toggleMin();
+
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.opened = true;
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    startingDay: 1
+  };
+
+  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+  $scope.format = $scope.formats[0];
+
+  var tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  var afterTomorrow = new Date();
+  afterTomorrow.setDate(tomorrow.getDate() + 2);
+  $scope.events =
+    [
+      {
+        date: tomorrow,
+        status: 'full'
+      },
+      {
+        date: afterTomorrow,
+        status: 'partially'
+      }
+    ];
+
+  $scope.getDayClass = function(date, mode) {
+    if (mode === 'day') {
+      var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+      for (var i=0;i<$scope.events.length;i++){
+        var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+        if (dayToCheck === currentDay) {
+          return $scope.events[i].status;
+        }
+      }
+    }
+
+    return '';
+  };
+});
+	</script>
+
+</body>
+
+</html>
